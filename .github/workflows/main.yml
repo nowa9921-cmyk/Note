@@ -1,4 +1,4 @@
-name: Eren
+name: Eren Yeager
 
 on:
   workflow_dispatch:
