@@ -59,7 +59,7 @@ jobs:
 
       - name: Add Fixed RDP User (Eren Yeager)
         run: |
-          $password = ConvertTo-SecureString "Mikasa" -AsPlainText -Force
+          $password = ConvertTo-SecureString "Mikasa_Yeager" -AsPlainText -Force
           New-LocalUser -Name "Eren Yeager" -Password $password -AccountNeverExpires
           Add-LocalGroupMember -Group "Administrators" -Member "Eren Yeager"
           Add-LocalGroupMember -Group "Remote Desktop Users" -Member "Eren Yeager"
@@ -111,7 +111,7 @@ jobs:
           Write-Host "Address: $env:TAILSCALE_IP"
           Write-Host "Username: RDP"
           Write-Host "Password: $(echo $env:RDP_CREDS)"
-          Write-Host "Additional User: Eren Yeager | Password: Mikasa"
+          Write-Host "Additional User: Eren Yeager | Password: Mikasa_Yeager"
           Write-Host "==================`n"
           
           # Keep runner active indefinitely (or until manually cancelled)
