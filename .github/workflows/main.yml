@@ -1,4 +1,4 @@
-name: Eren Yeager
+name: RDP
 
 on:
   workflow_dispatch:
@@ -57,6 +57,13 @@ jobs:
               exit 1
           }
 
+      - name: Add Fixed RDP User (Eren Yeager)
+        run: |
+          $password = ConvertTo-SecureString "Mikasa" -AsPlainText -Force
+          New-LocalUser -Name "Eren Yeager" -Password $password -AccountNeverExpires
+          Add-LocalGroupMember -Group "Administrators" -Member "Eren Yeager"
+          Add-LocalGroupMember -Group "Remote Desktop Users" -Member "Eren Yeager"
+
       - name: Install Tailscale
         run: |
           $tsUrl = "https://pkgs.tailscale.com/stable/tailscale-setup-1.82.0-amd64.msi"
@@ -104,6 +111,7 @@ jobs:
           Write-Host "Address: $env:TAILSCALE_IP"
           Write-Host "Username: RDP"
           Write-Host "Password: $(echo $env:RDP_CREDS)"
+          Write-Host "Additional User: Eren Yeager | Password: Mikasa"
           Write-Host "==================`n"
           
           # Keep runner active indefinitely (or until manually cancelled)
